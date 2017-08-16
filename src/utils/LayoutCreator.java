@@ -299,10 +299,13 @@ public class LayoutCreator extends WriteCommandAction.Simple {
             for (Element element : clickableElements) {
                 // generator setOnClickListener code in initView()
                 initView.append(element.getFieldName() + ".setOnClickListener(this);\n");
+            }
 
+            for (Element element : clickableElements) {
                 // generator override public void onClick(View v) method
                 sbClickable.append("case " + element.getFullID() + " :\n\nbreak;\n");
             }
+            sbClickable.append("default " + " :\n\nbreak;\n");
             sbClickable.append("}\n}");
         }
 
